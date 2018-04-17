@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% for visitor in visitors %}
+  <div><p>{{ visitor.visitor_info.username }} : Visit time : <b>{{ visitor.time }}</b></p></div>
+  {% endfor %}
+{% endblock %}
+
+
+<!-- 2 -->
+<!-- <html>
+    <head>
+        <title>CodeBase Live Feed Visitor List</title>
+    </head>
+    <body>
+        {% for visitor in visitors %}
+        <div><p>{{ visitor.visitor_info.username }} : Visit time : <b>{{ visitor.time }}</b></p></div>
+        {% endfor %}
+    </body>
+</html> -->
