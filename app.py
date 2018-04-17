@@ -2,14 +2,16 @@ from flask import Flask, render_template, request, Response
 from flask_bootstrap import Bootstrap
 from datetime import datetime
 from importlib import import_module
+import camera driver
 import os
 
 
-# import camera driver
+# TODO:
+# Check for webcam, and if not, use mock camera
 if os.environ.get('CAMERA'):
-    Camera = import_module('camera_' + os.environ['CAMERA']).Camera
+    # set Camera to opencv.Camera (which should be our webcam) here
 else:
-    from camera import Camera
+    # import mock camera here
 
 
 app = Flask(__name__)
@@ -46,7 +48,8 @@ def my_form_post():
 def gen(camera):
     """Video streaming generator function."""
     while True:
-        frame = camera.get_frame()
+        # TODO: Get frame with camera.get_frame() and set to frame
+        #insert code here
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
@@ -55,7 +58,8 @@ def gen(camera):
 @app.route('/cam')
 def video_feed():
     """Video streaming route. Put this in the src attribute of an img tag."""
-    return Response(gen(Camera()),
+    # TODO: Return a response, by calling gen(Camera()) to get frames
+    return Response( #insert code here,
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 

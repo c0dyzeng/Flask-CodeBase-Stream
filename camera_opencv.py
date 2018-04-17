@@ -16,8 +16,8 @@ class Camera(BaseCamera):
             raise RuntimeError('Could not start camera.')
 
         while True:
-            # read current frame
-            _, img = camera.read()
+            # TODO read current frame with camera.read()
+            # insert code here
 
             # encode as a jpeg image and return it
             yield cv2.imencode('.jpg', img)[1].tobytes()
